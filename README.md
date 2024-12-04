@@ -1,6 +1,7 @@
 # Moon days react app
 
 That is  frontend for the MoonApp.
+Live https://moon-days-react-app.vercel.app/
 
 ## Get up and running
 ```
@@ -8,9 +9,6 @@ npm start
 ```
 
 ## TODO
-1. ~~create new git repo, push it there~~ 
-2. ~~connect to backend and show data~~ 
-3. ~~connect to vercel and set up ci cd for online deploy~~
 4. make it look nicer, add more data
 5. create new pages and change strucrure if needed. 
 
