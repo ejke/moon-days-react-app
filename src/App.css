@@ -1,5 +1,5 @@
 .bg {
-  background-color: #f2b933;
+  background-color: var(--hex-color, initial);
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -29,7 +29,7 @@
 }
 
 .color {
-  color: #f2b933;
+  color: var(--hex-color, initial);
 }
 .characteristics {
   text-align: left;

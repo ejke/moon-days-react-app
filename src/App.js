@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { fetchMoonDayData } from './services/api';
+import { formatDate, formatTime } from './services/format';
 import './App.css';
 
 const App = () => {
@@ -9,7 +10,7 @@ const App = () => {
     useEffect(() => {
         const getData = async () => {
             try {
-                const data = await fetchMoonDayData(new Date().toISOString());
+                const data = await fetchMoonDayData(new Date().toISOString().split('T')[0]);
                 setMoonData(data);
             } catch (err) {
                 setError("Failed to load moon day data.");
@@ -17,6 +18,12 @@ const App = () => {
         };
         getData();
     }, []);
+
+    useEffect(() => {
+        if (moonData) {
+            document.documentElement.style.setProperty('--hex-color', moonData.hex);
+        }
+    }, [moonData]);
 
     return (
         <div className='bg'>
@@ -26,8 +33,8 @@ const App = () => {
                     <div>
                         {/* change date format -> K, 04.detsember 2024 */}
                         {/* get color and set as style  */}
-                        <p className='smol'>{moonData.date}  🚀🌙 {moonData.moonrise_time}</p>
-                        <h1 className='headline'>{moonData.moon_date}. {moonData.symbol} 🦄</h1>
+                        <p className='smol'>{formatDate(moonData.date)}  🚀🌙 Kuutõus: {formatTime(moonData.moonrise_time)}</p>
+                        <h1 className='headline'>{moonData.moon_date}. {moonData.symbol} {moonData.emoji}</h1>
                         <p className='after-headline'>
                             <span className='description'>Värv: </span> 
                             <span className='color' >{moonData.color}</span> 

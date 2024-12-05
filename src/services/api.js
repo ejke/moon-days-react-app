@@ -8,7 +8,7 @@ export const fetchMoonDayData = async (date) => {
     const formattedDate = formatDate(date);
     console.log('formattedDate', formattedDate)
     try {
-        const response = await axios.get(`${LOCAL_API_BASE_URL}/moon-day-data?date=${formattedDate}`);
+        const response = await axios.get(`${API_BASE_URL}/moon-day-data?date=${formattedDate}`);
         return response.data;
     } catch (error) {
         console.error("Error fetching moon day data:", error);

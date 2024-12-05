@@ -2,6 +2,7 @@
 
 That is  frontend for the MoonApp.
 Live https://moon-days-react-app.vercel.app/
+The CICD is automatic from origin/main branch. What goes up goes live.
 
 ## Get up and running
 ```
@@ -9,7 +10,8 @@ npm start
 ```
 
 ## TODO
-4. make it look nicer, add more data
+1. ~~add data to act~~
+___
 5. create new pages and change strucrure if needed. 
 
 
