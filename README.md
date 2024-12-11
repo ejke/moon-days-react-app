@@ -10,10 +10,9 @@ npm start
 ```
 
 ## TODO
-1. Change icon
-2. Bloki kohale kuupäeva valik
 3. Kuu vaade
-4. logo
+4. logo -  change something in manifest.json or in file
+delete old logos
 5. burger menüü
 ___
 6. Sisselogimine Google & teiste auth meetoditega + email
