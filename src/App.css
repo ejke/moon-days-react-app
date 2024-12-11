@@ -69,6 +69,9 @@
   width: -webkit-fill-available;
 }
 
+input:focus {
+    outline: none;
+}
 .react-datepicker-wrapper .react-datepicker__input-container:after {
   display: inline-block;
   content: url("../public/calendar.svg");

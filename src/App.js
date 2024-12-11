@@ -11,16 +11,16 @@ const App = () => {
     const [date, setDate] = useState(new Date());
 
     useEffect(() => {
-        const getData = async () => {
+        const getData = async (selectedDate) => {
             try {
-                const data = await fetchMoonDayData(new Date().toISOString().split('T')[0]);
+                const data = await fetchMoonDayData(selectedDate.toISOString().split('T')[0]);
                 setMoonData(data);
             } catch (err) {
                 setError("Failed to load moon day data.");
             }
         };
-        getData();
-    }, []);
+        getData(date);
+    }, [date]);
 
     useEffect(() => {
         if (moonData) {
