@@ -33,7 +33,7 @@ const App = () => {
 
             <section>
                 <div className="datepicker">
-                    <DatePicker selected={date} onChange={(date) => setDate(date)} />
+                    <DatePicker dateFormat="dd/MM/yyyy" selected={date} onChange={(date) => setDate(date)} />
                 </div>
                 <div className="box">
                     {error && <p>{error}</p>}

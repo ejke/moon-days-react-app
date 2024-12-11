@@ -66,14 +66,15 @@
   padding: 16.5px 14px;
   padding-right: 0;
   color: #413c3c;
+  width: -webkit-fill-available;
 }
 
 .react-datepicker-wrapper .react-datepicker__input-container:after {
   display: inline-block;
   content: url("../public/calendar.svg");
-  position: relative;
-  top: 8px;
-  right: 4px;
+  position: absolute;
+  top: 14px;
+  right: 10px;
 }
 
 .datepicker .react-datepicker {
