@@ -5,6 +5,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .box {
   display: block;
   margin: 1em;
@@ -14,10 +15,12 @@
   background-color: #ffffff;
   text-align: center;
 }
+
 .smol {
   font-size: 0.8em;
   color: #6b6b6b;
 }
+
 .headline {
   font-size: 2em;
   margin: 0;
@@ -31,10 +34,73 @@
 .color {
   color: var(--hex-color, initial);
 }
+
 .characteristics {
   text-align: left;
 }
+
 .description {
   color: #6b6b6b;
   font-style: italic;
+}
+
+.datepicker {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.react-datepicker-wrapper .react-datepicker__input-container {
+  margin: auto;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(232, 234, 238);
+  border-radius: 12px;
+  box-shadow: 0px 0px 10px #6b6b6b;
+}
+
+.react-datepicker-wrapper input {
+  font: inherit;
+  color: currentColor;
+  border: 0;
+  background: none;
+  padding: 16.5px 14px;
+  padding-right: 0;
+  color: #413c3c;
+}
+
+.react-datepicker-wrapper .react-datepicker__input-container:after {
+  display: inline-block;
+  content: url("../public/calendar.svg");
+  position: relative;
+  top: 8px;
+  right: 4px;
+}
+
+.datepicker .react-datepicker {
+  padding: 0 0.4em;
+  font-family: inherit;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 5px -3px, rgba(0, 0, 0, 0.14) 0px 8px 10px 1px, rgba(0, 0, 0, 0.12) 0px 3px 14px 2px;
+}
+
+.datepicker .react-datepicker__header {
+  border: none;
+  background-color: #fff;
+}
+
+.datepicker .react-datepicker__current-month {
+  margin-bottom: 1em;
+}
+
+.datepicker .react-datepicker__day-name {
+  color:#6b6b6b;
+}
+.datepicker .react-datepicker__month {
+  margin: 0.4em 1em 1em;
+}
+
+/* Small triable at top */
+.datepicker .react-datepicker-popper[data-placement^=bottom] .react-datepicker__triangle {
+  fill: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
 }

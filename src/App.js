@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { fetchMoonDayData } from './services/api';
 import { formatDate, formatTime } from './services/format';
 import './App.css';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const App = () => {
     const [moonData, setMoonData] = useState(null);
     const [error, setError] = useState(null);
+    const [date, setDate] = useState(new Date());
 
     useEffect(() => {
         const getData = async () => {
@@ -27,38 +30,44 @@ const App = () => {
 
     return (
         <div className='bg'>
-            <section className="box">
-                {error && <p>{error}</p>}
-                {moonData ? (
-                    <div>
-                        {/* change date format -> K, 04.detsember 2024 */}
-                        {/* get color and set as style  */}
-                        <p className='smol'>{formatDate(moonData.date)}  🚀🌙 Kuutõus: {formatTime(moonData.moonrise_time)}</p>
-                        <h1 className='headline'>{moonData.moon_date}. {moonData.symbol} {moonData.emoji}</h1>
-                        <p className='after-headline'>
-                            <span className='description'>Värv: </span> 
-                            <span className='color' >{moonData.color}</span> 
-                            <span className='description'> Element: </span> 
-                            {moonData.element}
-                        </p>
-                        <p>{moonData.keywords}</p>
-                        <p>{moonData.comment}</p>
 
-                        <div className='characteristics'>
+            <section>
+                <div className="datepicker">
+                    <DatePicker selected={date} onChange={(date) => setDate(date)} />
+                </div>
+                <div className="box">
+                    {error && <p>{error}</p>}
+                    {moonData ? (
+                        <div>
+                            {/* change date format -> K, 04.detsember 2024 */}
+                            {/* get color and set as style  */}
+                            <p className='smol'>{formatDate(moonData.date)}  🚀🌙 Kuutõus: {formatTime(moonData.moonrise_time)}</p>
+                            <h1 className='headline'>{moonData.moon_date}. {moonData.symbol} {moonData.emoji}</h1>
+                            <p className='after-headline'>
+                                <span className='description'>Värv: </span>
+                                <span className='color' >{moonData.color}</span>
+                                <span className='description'> Element: </span>
+                                {moonData.element}
+                            </p>
+                            <p>{moonData.keywords}</p>
+                            <p>{moonData.comment}</p>
 
-                            <p><span className='description'>Tegevus:</span> {moonData.activity}</p>
-                            <p><span className='description'>Vägi:</span> {moonData.power}</p>
-                            <p><span className='description'>Tervis:</span> {moonData.health}</p>
-                            <p><span className='description'>Ended:</span> {moonData.omens}</p>
-                            <p><span className='description'>Rituaalid:</span> {moonData.rituals}</p>
+                            <div className='characteristics'>
 
-                            {/* Display more fields as needed */}
+                                <p><span className='description'>Tegevus:</span> {moonData.activity}</p>
+                                <p><span className='description'>Vägi:</span> {moonData.power}</p>
+                                <p><span className='description'>Tervis:</span> {moonData.health}</p>
+                                <p><span className='description'>Ended:</span> {moonData.omens}</p>
+                                <p><span className='description'>Rituaalid:</span> {moonData.rituals}</p>
+
+                                {/* Display more fields as needed */}
+                            </div>
+                            <p>{moonData.comment_2}</p>
                         </div>
-                        <p>{moonData.comment_2}</p>
-                    </div>
-                ) : (
-                    <p>Loading...</p>
-                )}
+                    ) : (
+                        <p>Loading...</p>
+                    )}
+                </div>
             </section>
         </div>
     );

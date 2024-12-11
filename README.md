@@ -10,9 +10,15 @@ npm start
 ```
 
 ## TODO
-1. ~~add data to act~~
+1. Change icon
+2. Bloki kohale kuupäeva valik
+3. Kuu vaade
+4. logo
+5. burger menüü
 ___
-5. create new pages and change strucrure if needed. 
+6. Sisselogimine Google & teiste auth meetoditega + email
+Välja logitud vaade
+Sisselogitud vaade, auth jne
 
 
 
