@@ -16,6 +16,17 @@ export const fetchMoonDayData = async (date) => {
     }
 };
 
+export const fetchMoonDayPreviewData = async (date) => {
+    const formattedDate = formatDate(date);
+    try {
+        const response = await axios.get(`${API_BASE_URL}/moon-data?date=${formattedDate}`);
+        return response.data;
+    } catch (error) {
+        console.error("Error fetching moon day data:", error);
+        throw error;
+    }
+};
+
 const formatDate = (date) => {
     const d = new Date(date);
     const year = d.getFullYear();

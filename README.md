@@ -10,12 +10,9 @@ npm start
 ```
 
 ## TODO
-3. Kuu vaade
-4. logo -  change something in manifest.json or in file
-delete old logos
-5. burger menüü
-___
-6. Sisselogimine Google & teiste auth meetoditega + email
+1. Kuu vaade
+2. burger menüü kui väike
+3. Sisselogimine Google & teiste auth meetoditega + email
 Välja logitud vaade
 Sisselogitud vaade, auth jne
 

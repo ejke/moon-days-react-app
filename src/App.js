@@ -3,6 +3,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import KuuvaadePage from './pages/KuuvaadePage';
+import PreviewPage from './pages/PreviewPage';
 import './App.css';
 
 const App = () => {
@@ -13,17 +14,21 @@ const App = () => {
                     <div className="navbar-logo">
                         <img src="/logo.png" alt="Logo" />
                     </div>
-                    {/* <ul className="navbar-links">
+                    <ul className="navbar-links">
                         <li>
                             <Link to="/">Päev</Link>
                         </li>
                         <li>
-                            <Link to="/kuuvaade">Kuuvaade</Link>
+                            <Link to="/eelvaade">Preview</Link>
                         </li>
-                    </ul> */}
+                        {/* <li>
+                            <Link to="/kuuvaade">Kuuvaade</Link>
+                        </li> */}
+                    </ul>
                 </nav>
                 <Routes>
                     <Route path="/" element={<HomePage />} />
+                    <Route path="/eelvaade" element={<PreviewPage />} />
                     <Route path="/kuuvaade" element={<KuuvaadePage />} />
                 </Routes>
             </div>

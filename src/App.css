@@ -10,7 +10,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: var(--hex-color); /* Use the same background color as the homepage */
+  background-color: var(--hex-color-1); /* Use the first hex color for the navbar */
 }
 
 .navbar-logo img {
@@ -43,7 +43,7 @@ body {
 }
 
 .bg {
-  background-color: var(--hex-color, initial);
+  background: linear-gradient(var(--hex-color-1), var(--hex-color-2));
   min-height: 92.5vh;
   display: flex;
   justify-content: center;
@@ -75,8 +75,13 @@ body {
   margin-bottom: 2em;
 }
 
-.color {
-  color: var(--hex-color, initial);
+.color-0 {
+  color: var(--hex-color-1);
+  text-shadow: 0px 0px 2px #d4d4d4;
+}
+
+.color-1 {
+  color: var(--hex-color-2);
 }
 
 .characteristics {
