@@ -1,7 +1,10 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'https://isabelblackwell.pythonanywhere.com';
+const WEB_API_BASE_URL = 'https://isabelblackwell.pythonanywhere.com';
 const LOCAL_API_BASE_URL = 'http://127.0.0.1:5000';
+
+// NOTE: Change ONLY this
+const API_BASE_URL = WEB_API_BASE_URL;
 
 export const fetchMoonDayData = async (date) => {
     console.log('date', date)
@@ -23,6 +26,16 @@ export const fetchMoonDayPreviewData = async (date) => {
         return response.data;
     } catch (error) {
         console.error("Error fetching moon day data:", error);
+        throw error;
+    }
+};
+
+export const fetchMoonMonthData = async (year, month) => {
+    try {
+        const response = await axios.get(`${API_BASE_URL}/moon-month?year=${year}&month=${month}`);
+        return response.data;
+    } catch (error) {
+        console.error("Error fetching moon month data:", error);
         throw error;
     }
 };

@@ -21,9 +21,9 @@ const App = () => {
                         <li>
                             <Link to="/eelvaade">Preview</Link>
                         </li>
-                        {/* <li>
+                        <li>
                             <Link to="/kuuvaade">Kuuvaade</Link>
-                        </li> */}
+                        </li> 
                     </ul>
                 </nav>
                 <Routes>

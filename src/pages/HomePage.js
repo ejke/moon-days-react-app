@@ -1,5 +1,6 @@
 // src/HomePage.js
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { fetchMoonDayData } from '../services/api';
 import { formatDate, formatTime } from '../services/format';
 import '../App.css';
@@ -7,9 +8,14 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 const HomePage = () => {
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+    const selectedDate = queryParams.get('date');
+    const initialDate = selectedDate ? new Date(selectedDate) : new Date();
+
     const [moonData, setMoonData] = useState([]);
     const [error, setError] = useState(null);
-    const [date, setDate] = useState(new Date());
+    const [date, setDate] = useState(initialDate);
 
     useEffect(() => {
         const getData = async (selectedDate) => {
@@ -30,13 +36,6 @@ const HomePage = () => {
         };
         getData(date);
     }, [date]);
-
-    //which hex to use? lahenda
-    // useEffect(() => {
-    //     if (moonData) {
-    //         document.documentElement.style.setProperty('--hex-color', moonData.hex);
-    //     }
-    // }, [moonData]);
 
     return (
         <div className='bg'>
