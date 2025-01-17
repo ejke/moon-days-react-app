@@ -10,7 +10,9 @@ npm start
 ```
 
 ## TODO
-1. Kuu vaade
+1. Tutvustusleht - info asjast ja tänase päeva essents.
+2. subs - tasuta jagadad vaid tänast?
+3. kuuvaade muutus kui liigutada lehte
 2. burger menüü kui väike
 3. Sisselogimine Google & teiste auth meetoditega + email
 Välja logitud vaade

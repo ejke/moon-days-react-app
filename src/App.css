@@ -2,7 +2,7 @@
 
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: Lato, sans-serif;
 }
 
 .navbar {
@@ -43,11 +43,34 @@ body {
 }
 
 .bg {
-  background: linear-gradient(var(--hex-color-1), var(--hex-color-2));
   min-height: 92.5vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction:column
+}
+
+.bg-color {
+  background: linear-gradient(var(--hex-color-1), var(--hex-color-2));
+}
+
+.bg-static-color {
+  background-color: #413c3c;
+}
+
+.landing {
+  display: block;
+  color: #5b5b5b;
+  width: 80%;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 2em;
+  text-align: center;
+}
+.center {
+  text-align: center;
 }
 
 .box {
@@ -217,4 +240,9 @@ input:focus {
   .react-calendar__navigation__arrow {
       flex: 1 1 auto;
   }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Lora', sans-serif;
+  font-weight: 700;
 }

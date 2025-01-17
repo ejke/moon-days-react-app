@@ -24,7 +24,7 @@ const PreviewPage = () => {
     }, [date]);
 
     return (
-        <div className='bg'>
+        <div className='bg bg-color'>
             <section>
                 <div className="datepicker">
                     <DatePicker dateFormat="dd/MM/yyyy" selected={date} onChange={(date) => setDate(date)} />

@@ -43,11 +43,11 @@ const KuuvaadePage = () => {
     
     const handleDayClick = (value) => {
         const formattedDate = moment(value).format('YYYY-MM-DD');
-        navigate(`/?date=${formattedDate}`);
+        navigate(`/paev?date=${formattedDate}`);
     };
 
     return (
-        <div className='bg'>
+        <div className='bg bg-color'>
             <section>
                 <div className="calendar-container">
                     <Calendar
