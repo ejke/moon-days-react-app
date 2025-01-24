@@ -31,11 +31,16 @@ const HomePage = () => {
 
     return (
         <div className='bg bg-static-color'>
+            <section className='bg-gradient'>
+            <div className="landing">
+                    <h1>Kuu päevade kalender</h1>
+
+                </div>
+            </section>
             <section>
                 <div className="landing">
-                    <h1>Kuu vägi - sinu teejuht isiklikuks kasvuks ja harmooniaks</h1>
 
-                    <p>Kas oled kunagi tundnud, et Kuu faasid mõjutavad sinu meeleolu, energiataset ja otsustusvõimet? Sa ei ole üksi! Juba sajandeid on inimesed jälginud Kuu rütme ja kasutanud neid oma elus orienteerumiseks.</p>
+                    <p className='center'>Kas oled tundnud, et Kuu faasid mõjutavad sinu meeleolu, energiataset ja otsustusvõimet?</p>
 
                     <h2 className='center'>Tänane kuu päev:</h2>
                 </div>
@@ -78,37 +83,43 @@ const HomePage = () => {
             </section>
             <section>
                 <div className="landing">
-                    <h2>Mis on Kuu päevade kalender?</h2>
+                    <h2 className='center'>Mis on Kuu päevade kalender?</h2>
 
-                    <p>See on iidne tarkus, mille on kirja pannud šamaanid, kes on sügavalt ühenduses loodusega. Igal Kuu päeval, mis algab Kuu tõusuga, on oma ainulaadne energia ja iseloom. See kalender aitab sul mõista neid energiaid ja kasutada neid enda hüvanguks.</p>
+                    <p className='center'>Kuu päevade kalender näitab ära, mitmes kuu päev täna on. Kuu päev on arvutatud välja arvestades asukohaks Tallinna linna Eestis, kuu loomise ja tõusude kellaaegu.  Igal Kuu päeval, mis algab Kuu tõusuga, on oma ainulaadne energia ja iseloom. Märksõnad, mis on kirjutatud kuu päevade kohta, on kirja pandud eesti oma šamaanide poolt, kes on üle 30 aasta jälginud ja üles tähendanud kuu päevi ja nende energiaid. See kalender aitab sul mõista neid energiaid ja kasutada neid enda hüvanguks.</p>
 
-                    <h2>Kellele on see mõeldud?</h2>
+                    <div className="list-container">
+                        <div>
+                            <h2>Kellele on see mõeldud?</h2>
 
-                    <p>Kuu päevade kalender on igaühele, kes soovib:</p>
+                            <p>Kuu päevade kalender on igaühele, kes soovib:</p>
 
-                    <ul>
-                        <li>Elada kooskõlas looduse rütmidega.</li>
-                        <li>Saavutada suuremat tasakaalu ja harmooniat.</li>
-                        <li>Teha teadlikumaid otsuseid.</li>
-                        <li>Avastada oma sisemist potentsiaali.</li>
-                        <li>Parandada oma suhteid ja enesetunnet.</li>
-                    </ul>
+                            <ul>
+                                <li>Elada kooskõlas looduse rütmidega.</li>
+                                <li>Saavutada suuremat tasakaalu ja harmooniat.</li>
+                                <li>Teha teadlikumaid otsuseid.</li>
+                                <li>Avastada oma sisemist potentsiaali.</li>
+                                <li>Parandada oma suhteid ja enesetunnet.</li>
+                            </ul>
+                        </div>
 
-                    <h2>Milleks seda kasutada?</h2>
+                        <div>
+                            <h2>Milleks seda kasutada?</h2>
 
-                    <p>Kuu päevade kalender aitab sul:</p>
+                            <p>Kuu päevade kalender aitab sul:</p>
 
-                    <ul>
-                        <li>Planeerida oma tegevusi vastavalt Kuu energiale.</li>
-                        <li>Mõista oma emotsioone ja käitumismustreid.</li>
-                        <li>Leida sobivaid päevi erinevateks ettevõtmisteks.</li>
-                        <li>Tugevdada oma intuitsiooni ja loovust.</li>
-                        <li>Arendada sügavamat ühendust iseenda ja universumiga.</li>
-                    </ul>
+                            <ul>
+                                <li>Planeerida oma tegevusi vastavalt Kuu energiale.</li>
+                                <li>Mõista oma emotsioone ja käitumismustreid.</li>
+                                <li>Leida sobivaid päevi erinevateks ettevõtmisteks.</li>
+                                <li>Tugevdada oma intuitsiooni ja loovust.</li>
+                                <li>Arendada sügavamat ühendust iseenda ja universumiga.</li>
+                            </ul>
+                        </div>
+                    </div>
 
-                    <h2>Kuidas seda kasutada?</h2>
+                    <h2 className='center'>Kuidas seda kasutada?</h2>
 
-                    <p>Meie veebirakenduses leiad iga päeva kohta:</p>
+                    <p >Meie veebirakenduses leiad iga päeva kohta:</p>
 
                     <ul>
                         <li>Lühikese kirjelduse Kuu energiast.</li>
@@ -116,21 +127,10 @@ const HomePage = () => {
                         <li>Kirjelduse, mille jaoks on see päev hea.</li>
                     </ul>
 
-                    <h2>Tasuta vs Tasuline versioon</h2>
+                    <h2 className='center'>Toeta tegijat</h2>
 
-                    <p>Tasuta versioon annab sulle ülevaate iga päeva põhienergiast. Tasuline versioon pakub aga sügavamat informatsiooni, sealhulgas:</p>
-
-                    <ul>
-                        <li>Täpsemaid soovitusi erinevate eluvaldkondade jaoks (armastus, karjäär, tervis).</li>
-                        <li>Isikupärastatud Kuu kalendrit sinu sünnikuupäeva alusel.</li>
-                        <li>Meditatsioone ja rituaale iga Kuu päeva toetamiseks.</li>
-                        <li>Juurdepääsu eksklusiivsele kogukonnale, kus saad jagada oma kogemusi ja õppida teistelt.</li>
-                    </ul>
-
-                    <p>Avasta Kuu tarkus ja loo endale elu, mis on täis harmooniat ja küllust!</p>
-
-                    <a href="#" class="button">Proovi tasuta!</a>
-                    <a href="#" class="button">Telli tasuline versioon!</a>
+                    <p className='center'>Kuu päevade kalendri loomine ja üleval pidamine võtab energiat.</p>
+                    <p className='center'>Kui kuu päevade kalender sulle meeldib või on kasulik, toeta tegijat püsikorraldusega: </p>
                 </div>
             </section>
 
