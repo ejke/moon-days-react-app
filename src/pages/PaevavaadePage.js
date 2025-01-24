@@ -41,7 +41,12 @@ const PaevavaadePage = () => {
         <div className='bg bg-color'>
             <section>
                 <div className="datepicker">
-                    <DatePicker dateFormat="dd/MM/yyyy" selected={date} onChange={(date) => setDate(date)} />
+                    <DatePicker 
+                        dateFormat="dd/MM/yyyy" 
+                        selected={date} 
+                        onChange={(date) => setDate(date)} 
+                        calendarStartDay={1} // This sets the week to start on Monday
+                    />
                 </div>
             
                     {error && <p>{error}</p>}
