@@ -139,7 +139,7 @@ const HomePage = () => {
 
                             <ul>
                                 <li>Vestlusbot, kellelt otse küsida millal mingi tegevus on soositud.</li>
-                                <li>Võimaluse enda märmeid teha ja näha iga päeva kohta.</li>
+                                <li>Võimaluse enda märkmeid teha ja näha iga päeva kohta.</li>
 
                             </ul>
                         </div>
