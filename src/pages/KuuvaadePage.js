@@ -41,7 +41,6 @@ const KuuvaadePage = () => {
                 const year = selectedDate.getFullYear();
                 const month = selectedDate.getMonth() + 1; // getMonth() returns 0-based month
                 const data = await fetchMoonMonthData(year, month);
-                console.log('data', data)
                 setMonthData(data);
             } catch (err) {
                 setError("Failed to load moon month data.");
@@ -79,6 +78,16 @@ const KuuvaadePage = () => {
         navigate(`/paev?date=${formattedDate}`);
     };
 
+    const handleActiveStartDateChange = ({ action, activeStartDate, view }) => {
+        if (view === 'month' && (action === 'next' || action === 'prev')) {
+            const year = activeStartDate.getFullYear();
+            const month = activeStartDate.getMonth() + 1;
+            fetchMoonMonthData(year, month)
+                .then(data => setMonthData(data))
+                .catch(() => setError("Failed to load moon month data."));
+        }
+    };
+
     return (
         <div className='bg bg-color'>
             <section>
@@ -94,6 +103,7 @@ const KuuvaadePage = () => {
                         maxDetail='month'
                         next2Label={null}
                         prev2Label={null}
+                        onActiveStartDateChange={handleActiveStartDateChange}
                     />
                 </div>
                 {error && <p>{error}</p>}
