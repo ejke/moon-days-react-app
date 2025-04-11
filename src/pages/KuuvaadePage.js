@@ -14,11 +14,34 @@ const KuuvaadePage = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
+        const styleElement = document.createElement('style');
+        styleElement.id = 'dynamic-calendar-styles';
+        
+        let cssRules = '';
+        monthData.forEach(dayData => {
+            if (dayData.hex) {
+                const className = `day-${dayData.hex.replace('#', '')}`;
+                cssRules += `.${className} { background-color: ${dayData.hex}; }\n`;
+            }
+        });
+        
+        styleElement.textContent = cssRules;
+        document.head.appendChild(styleElement);
+
+        return () => {
+            if (styleElement) {
+                styleElement.remove();
+            }
+        };
+    }, [monthData]);
+
+    useEffect(() => {
         const getData = async (selectedDate) => {
             try {
                 const year = selectedDate.getFullYear();
                 const month = selectedDate.getMonth() + 1; // getMonth() returns 0-based month
                 const data = await fetchMoonMonthData(year, month);
+                console.log('data', data)
                 setMonthData(data);
             } catch (err) {
                 setError("Failed to load moon month data.");
@@ -31,7 +54,7 @@ const KuuvaadePage = () => {
         if (view === 'month') {
             const dayData = monthData.find(item => new Date(item.date).toDateString() === date.toDateString());
             return dayData ? (
-                <div className="tile-content" style={{ backgroundColor: dayData.hex }}>
+                <div className="tile-content">
                     <p>
                         <span>{dayData.moon_date}. {dayData.symbol} {dayData.emoji}</span><br/>
                         <span>Kuutõus: {dayData.moonrise_time}</span>
@@ -39,6 +62,16 @@ const KuuvaadePage = () => {
                 </div>
             ) : null;
         }
+    };
+
+    const tileClassName = ({ date, view }) => {
+        if (view === 'month') {
+            const dayData = monthData.find(item => new Date(item.date).toDateString() === date.toDateString());
+            if (dayData && dayData.hex) {
+                return `day-${dayData.hex.replace('#', '')}`;
+            }
+        }
+        return null;
     };
     
     const handleDayClick = (value) => {
@@ -54,7 +87,13 @@ const KuuvaadePage = () => {
                         onChange={setDate}
                         value={date}
                         tileContent={tileContent}
+                        tileClassName={tileClassName}
                         onClickDay={handleDayClick}
+                        defaultView='month'
+                        minDetail='month'
+                        maxDetail='month'
+                        next2Label={null}
+                        prev2Label={null}
                     />
                 </div>
                 {error && <p>{error}</p>}

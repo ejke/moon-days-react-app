@@ -1,5 +1,9 @@
 /* src/App.css */
 
+:root {
+      --box-shadow-light: 0 10px 30px rgba(0, 0, 0, 0.1); /* Põhishadow */
+}
+
 body {
   margin: 0;
   font-family: Lato, sans-serif;
@@ -51,7 +55,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column
+  flex-direction: column;
 }
 
 .bg-color {
@@ -72,7 +76,7 @@ body {
   color: #ebfff4;
   width: 80%;
   margin: 0 auto;
-  font-family: "Poppins", serif;
+  font-family: 'Poppins', serif;
   text-align: center;
 
   font-weight: 500;
@@ -86,7 +90,7 @@ body {
   }
 
   & h1 {
-    font-family: "Lexend Giga", serif;
+    font-family: 'Lexend Giga', serif;
     text-transform: uppercase;
   }
 }
@@ -101,9 +105,9 @@ body {
   }
 
   li::before {
-    content: "\e86c";
+    content: '\e86c';
     /* Ikooni kood */
-    font-family: "Material Symbols Outlined";
+    font-family: 'Material Symbols Outlined';
     /* Ikoonifondi nimi */
     font-size: 24px;
     /* Ikooni suurus */
@@ -138,7 +142,7 @@ h1 {
   display: block;
   margin: 1em;
   padding: 1em 2em;
-  box-shadow: 0px 0px 10px #6b6b6b;
+  box-shadow: var(--box-shadow-light);
   border-radius: 15px;
   background-color: #ffffff;
   text-align: center;
@@ -192,27 +196,27 @@ h1 {
 }
 
 .datepicker-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
 }
 
 .date-nav-button {
-    padding: 12px 16px;
-    border: none;
-    border-radius: 4px;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: white;
-    cursor: pointer;
-    font-size: 20px;
-    text-shadow: 0px 0px 10px #6b6b6b;
-    transition: background-color 0.2s;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 4px;
+  box-shadow: var(--box-shadow-light);
+  color: #6b6b6b;
+  background-color: white;
+  cursor: pointer;
+  font-size: 20px;
+  transition: background-color 0.2s;
 }
 
 .date-nav-button:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.7);
 }
 
 .react-datepicker-wrapper .react-datepicker__input-container {
@@ -220,7 +224,7 @@ h1 {
   background-color: rgb(255, 255, 255);
   border: 1px solid rgb(232, 234, 238);
   border-radius: 12px;
-  box-shadow: 0px 0px 10px #6b6b6b;
+  box-shadow: var(--box-shadow-light);
 }
 
 .react-datepicker-wrapper input {
@@ -240,7 +244,7 @@ input:focus {
 
 .react-datepicker-wrapper .react-datepicker__input-container:after {
   display: inline-block;
-  content: url("../public/calendar.svg");
+  content: url('../public/calendar.svg');
   position: absolute;
   top: 14px;
   right: 10px;
@@ -250,7 +254,8 @@ input:focus {
   padding: 0 0.4em;
   font-family: inherit;
   border: none;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 5px -3px, rgba(0, 0, 0, 0.14) 0px 8px 10px 1px, rgba(0, 0, 0, 0.12) 0px 3px 14px 2px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 5px -3px,
+    rgba(0, 0, 0, 0.14) 0px 8px 10px 1px, rgba(0, 0, 0, 0.12) 0px 3px 14px 2px;
 }
 
 .datepicker-container .react-datepicker__header {
@@ -271,28 +276,33 @@ input:focus {
 }
 
 /* Small triable at top */
-.datepicker-container .react-datepicker-popper[data-placement^=bottom] .react-datepicker__triangle {
+.datepicker-container
+  .react-datepicker-popper[data-placement^='bottom']
+  .react-datepicker__triangle {
   fill: rgb(255, 255, 255);
   color: rgb(255, 255, 255);
 }
-
 
 /* Calendar */
 
 .calendar-container {
   width: 100%;
+  padding: 20px;
+
+  abbr[title] {
+    text-decoration: none;
+  }
 }
 
 .calendar-container .react-calendar {
   width: 98%;
-  /* Adjust the width as needed */
   max-width: 1100px;
-  /* Set a maximum width */
   margin: 0 auto;
-  /* Center the calendar */
-  background-color: white;
-  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
   border: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 20px;
 }
 
 .react-calendar__month-view__days .react-calendar__tile {
@@ -307,8 +317,9 @@ input:focus {
   /* Adjust padding as needed */
 }
 
+
 .react-calendar__tile--active {
-  background-color: var(--hex-color-1);
+  background: var(--hex-color-1) !important;
   color: white;
 }
 
@@ -320,12 +331,25 @@ input:focus {
   color: white;
   padding: 0 0.5em;
   border-radius: 5px;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  opacity: 0.7;
 }
 
 .tile-content p {
-  background-color: rgb(0 0 0 / 30%);
+  /* background-color: rgb(0 0 0 / 30%);
   padding: 5px;
-  border-radius: 5px;
+  border-radius: 5px; */
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 4px 8px;
+  border-radius: 6px;
+  margin: 2px 0;
+  backdrop-filter: blur(2px);
+  position: relative;
+  z-index: 1;
 }
 
 @media (max-width: 768px) {
@@ -339,5 +363,102 @@ input:focus {
 
   .react-calendar__navigation__arrow {
     flex: 1 1 auto;
+  }
+}
+
+/* Navigatsiooninupud ja kuu pealkiri */
+.react-calendar__navigation {
+  margin-bottom: 20px;
+}
+
+.react-calendar__navigation button {
+  min-width: 44px;
+  background: none;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  color: #333;
+}
+
+.react-calendar__navigation button:disabled {
+  background-color: none;
+}
+
+.react-calendar__navigation__label {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+/* Nädalapäevade nimed */
+.react-calendar__month-view__weekdays {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 0.9em;
+  color: #666;
+  padding: 10px 0;
+}
+
+.react-calendar__month-view__weekdays__weekday {
+  padding: 10px;
+}
+
+/* Kalendri päevad */
+.react-calendar__month-view__days .react-calendar__tile {
+  border: 1px solid #dde3ea;
+  padding: 15px 10px;
+  position: relative;
+  font-weight: 500;
+}
+
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.react-calendar__tile--now {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+
+
+/* Tile sisu (kuu andmed) */
+.tile-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  color: white;
+  padding: 5px;
+  border-radius: 8px;
+  margin-top: 5px;
+  font-size: 0.85em;
+}
+
+.tile-content p {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 4px 8px;
+  border-radius: 6px;
+  margin: 2px 0;
+  backdrop-filter: blur(2px);
+}
+
+/* Mobiilivaade */
+@media (max-width: 768px) {
+  .calendar-container .react-calendar {
+    padding: 10px;
+  }
+
+  .react-calendar__month-view__days .react-calendar__tile {
+    padding: 8px 4px;
+  }
+
+  .tile-content {
+    font-size: 0.75em;
+  }
+
+  .tile-content p {
+    padding: 2px 4px;
   }
 }

@@ -65,7 +65,7 @@ const PaevavaadePage = () => {
       <section>
         <div className='datepicker-container'>
           <button onClick={handlePreviousDay} className='date-nav-button'>
-            ←
+            ‹
           </button>
 
           <DatePicker
@@ -75,7 +75,7 @@ const PaevavaadePage = () => {
             calendarStartDay={1} // This sets the week to start on Monday
           />
           <button onClick={handleNextDay} className='date-nav-button'>
-            →
+            ›
           </button>
         </div>
 
