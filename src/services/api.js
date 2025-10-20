@@ -7,9 +7,7 @@ const LOCAL_API_BASE_URL = 'http://127.0.0.1:5000';
 const API_BASE_URL = WEB_API_BASE_URL;
 
 export const fetchMoonDayData = async (date) => {
-    console.log('date', date)
     const formattedDate = formatDate(date);
-    console.log('formattedDate', formattedDate)
     try {
         const response = await axios.get(`${API_BASE_URL}/moon-day-data?date=${formattedDate}`);
         return response.data;
@@ -31,8 +29,10 @@ export const fetchMoonDayPreviewData = async (date) => {
 };
 
 export const fetchMoonMonthData = async (year, month) => {
+    // Format date as YYYY-MM-DD, using first day of the month
+    const formattedDate = `${year}-${String(month).padStart(2, '0')}-01`;
     try {
-        const response = await axios.get(`${API_BASE_URL}/moon-month?year=${year}&month=${month}`);
+        const response = await axios.get(`${API_BASE_URL}/moon-month?date=${formattedDate}`);
         return response.data;
     } catch (error) {
         console.error("Error fetching moon month data:", error);

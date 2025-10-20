@@ -1,5 +1,5 @@
 // src/pages/KuuvaadePage.js
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Calendar from 'react-calendar';
 import moment from 'moment';
@@ -10,13 +10,15 @@ import '../App.css';
 const KuuvaadePage = () => {
     const [monthData, setMonthData] = useState([]);
     const [error, setError] = useState(null);
-    const [date, setDate] = useState(new Date());
+    const [activeStartDate, setActiveStartDate] = useState(new Date());
     const navigate = useNavigate();
+    const abortControllerRef = useRef(null);
+    const currentRequestIdRef = useRef(0);
 
     useEffect(() => {
         const styleElement = document.createElement('style');
         styleElement.id = 'dynamic-calendar-styles';
-        
+
         let cssRules = '';
         monthData.forEach(dayData => {
             if (dayData.hex) {
@@ -24,7 +26,7 @@ const KuuvaadePage = () => {
                 cssRules += `.${className} { background-color: ${dayData.hex}; }\n`;
             }
         });
-        
+
         styleElement.textContent = cssRules;
         document.head.appendChild(styleElement);
 
@@ -37,17 +39,45 @@ const KuuvaadePage = () => {
 
     useEffect(() => {
         const getData = async (selectedDate) => {
+            // Cancel any in-flight request
+            if (abortControllerRef.current) {
+                abortControllerRef.current.abort();
+            }
+
+            // Create new abort controller for this request
+            abortControllerRef.current = new AbortController();
+
+            // Increment request ID to track the latest request
+            const requestId = ++currentRequestIdRef.current;
+
+            setError(null);
+
             try {
                 const year = selectedDate.getFullYear();
-                const month = selectedDate.getMonth() + 1; // getMonth() returns 0-based month
+                const month = selectedDate.getMonth() + 1;
                 const data = await fetchMoonMonthData(year, month);
-                setMonthData(data);
+
+                // Only update state if this is still the latest request
+                if (requestId === currentRequestIdRef.current) {
+                    setMonthData(data);
+                }
             } catch (err) {
-                setError("Failed to load moon month data.");
+                // Only update error if this is still the latest request and not aborted
+                if (requestId === currentRequestIdRef.current && err.name !== 'AbortError') {
+                    setError("Failed to load moon month data.");
+                }
             }
         };
-        getData(date);
-    }, [date]);
+
+        getData(activeStartDate);
+
+        // Cleanup function to abort on unmount
+        return () => {
+            if (abortControllerRef.current) {
+                abortControllerRef.current.abort();
+            }
+        };
+    }, [activeStartDate]);
 
     const tileContent = ({ date, view }) => {
         if (view === 'month') {
@@ -78,13 +108,10 @@ const KuuvaadePage = () => {
         navigate(`/paev?date=${formattedDate}`);
     };
 
-    const handleActiveStartDateChange = ({ action, activeStartDate, view }) => {
+    const handleActiveStartDateChange = ({ action, activeStartDate: newActiveStartDate, view }) => {
         if (view === 'month' && (action === 'next' || action === 'prev')) {
-            const year = activeStartDate.getFullYear();
-            const month = activeStartDate.getMonth() + 1;
-            fetchMoonMonthData(year, month)
-                .then(data => setMonthData(data))
-                .catch(() => setError("Failed to load moon month data."));
+            // Update the activeStartDate state, which will trigger the useEffect to fetch data
+            setActiveStartDate(newActiveStartDate);
         }
     };
 
@@ -93,8 +120,6 @@ const KuuvaadePage = () => {
             <section>
                 <div className="calendar-container">
                     <Calendar
-                        onChange={setDate}
-                        value={date}
                         tileContent={tileContent}
                         tileClassName={tileClassName}
                         onClickDay={handleDayClick}
@@ -104,6 +129,7 @@ const KuuvaadePage = () => {
                         next2Label={null}
                         prev2Label={null}
                         onActiveStartDateChange={handleActiveStartDateChange}
+                        activeStartDate={activeStartDate}
                     />
                 </div>
                 {error && <p>{error}</p>}
