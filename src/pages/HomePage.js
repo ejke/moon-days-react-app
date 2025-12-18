@@ -42,36 +42,48 @@ const HomePage = () => {
 
                     <p>Kas oled tundnud, et Kuu faasid mõjutavad sinu meeleolu, energiataset ja otsustusvõimet? Sul on õigus.</p>
 
-                    <h2>Tänane kuu päev:</h2>
+                    {/* <h2>Tänane kuu päev:</h2> */}
                 </div>
             </section>
-            <section>
-                {error && <p>{error}</p>}
-                {moonData.length > 0 ? (
-                    moonData.map((item, index) => (
-                        <div className="box">
-                            <div>
-                                <p className='smol'>{formatDate(item.date)}  🚀🌙 Kuutõus: {formatTime(item.moonrise_time)}</p>
-                                <h1 className='headline'>{item.moon_date}. {item.symbol} {item.emoji}</h1>
-                                <p className='after-headline'>
-                                    <span className='description'>Värv: </span>
-                                    <span className={`color-${index}`} >{item.color}</span>
-                                    <span className='description'> Element: </span>
-                                    {item.element}
-                                </p>
-                                <p>{item.keywords}</p>
-                                <p>{item.comment}</p>
-                                <div className='characteristics'>
+            <section className="landing">
+                <h2>Toeta tegijat 💸 🤑💰</h2>
 
-                                    <p className='desc-pre'><span className='description'>Tegevus:</span> {item.activity}</p>
-                                    <p className='desc-pre'><span className='description'>Vägi:</span> {item.power}</p>
-                                    <p className='desc-pre'><span className='description'>Tervis:</span> {item.health}</p>
-                                    <p className='desc-pre'><span className='description'>Ended:</span> {item.omens}</p>
-                                    <p className='desc-pre'><span className='description'>Rituaalid:</span> {item.rituals}</p>
+                <p>Kuu päevade kalendri loomine ja üleval pidamine võtab energiat.</p>
+                <p>Kui kuu päevade kalender sulle meeldib ja sind toetab, palun toeta omakorda tegijat: </p>
+            
+                <a class="toeta-btn" target="_blank" rel="noreferrer" href='http://revolut.me/eikevkk3'>
+                Toeta siin 💸
+                </a>
+                
+                <div className='spacer'></div>
+            </section>
+            {/* <section>
+        {error && <p>{error}</p>}
+        {moonData.length > 0 ? (
+            moonData.map((item, index) => (
+                <div className="box">
+                    <div>
+                        <p className='smol'>{formatDate(item.date)}  🚀🌙 Kuutõus: {formatTime(item.moonrise_time)}</p>
+                        <h1 className='headline'>{item.moon_date}. {item.symbol} {item.emoji}</h1>
+                        <p className='after-headline'>
+                            <span className='description'>Värv: </span>
+                            <span className={`color-${index}`} >{item.color}</span>
+                            <span className='description'> Element: </span>
+                            {item.element}
+                        </p>
+                        <p>{item.keywords}</p>
+                        <p>{item.comment}</p>
+                        <div className='characteristics'>
 
-                                    {/* Display more fields as needed */}
-                                </div>
-                                <p className='desc-pre'>{item.comment_2}</p>
+                            <p className='desc-pre'><span className='description'>Tegevus:</span> {item.activity}</p>
+                            <p className='desc-pre'><span className='description'>Vägi:</span> {item.power}</p>
+                            <p className='desc-pre'><span className='description'>Tervis:</span> {item.health}</p>
+                            <p className='desc-pre'><span className='description'>Ended:</span> {item.omens}</p>
+                            <p className='desc-pre'><span className='description'>Rituaalid:</span> {item.rituals}</p>
+
+                            {/* Display more fields as needed */}
+        {/* </div>
+            <p className='desc-pre'>{item.comment_2}</p></>
                             </div>
                         </div>
                     ))
@@ -79,8 +91,8 @@ const HomePage = () => {
                     <div className="box">
                         <p>Laeb...</p>
                     </div>
-                )}
-            </section>
+                )} */}
+            {/* </section>  */}
             <section>
                 <div className="landing">
                     <h2>Mis on Kuu päevade kalender?</h2>
@@ -144,17 +156,6 @@ const HomePage = () => {
                             </ul>
                         </div>
                     </div>
-
-                    <h2>Toeta tegijat 💸 🤑💰</h2>
-
-                    <p>Kuu päevade kalendri loomine ja üleval pidamine võtab energiat.</p>
-                    <p>Kui kuu päevade kalender sulle meeldib ja sind toetab, palun toeta omakorda tegijat: </p>
-                    <p>
-                        <a target="_blank" href='http://revolut.me/eikevkk3'>
-                        Saada
-                        </a>
-                    </p>
-                    <div className='spacer'></div>
                 </div>
             </section>
 
