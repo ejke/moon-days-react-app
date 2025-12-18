@@ -390,6 +390,12 @@ input:focus {
   text-align: left;
 }
 
+.react-calendar__month-view__days .react-calendar__tile abbr {
+  font-family: "Raleway", sans-serif;
+  text-decoration: none;
+  font-weight: bold;
+}
+
 /* Mobiilivaade */
 @media (max-width: 768px) {
   .calendar-container {
